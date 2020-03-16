@@ -1,0 +1,979 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detective Max Mystery - new escape game on mobile! Jam Games production.">
+    <meta name="author" content="Jam Games">
+
+    <meta property="og:url" content="ENTER_HERE_THIS_IS_BLANC">
+    <meta property="og:title" content="Detective Max Mystery">
+    <meta property="og:description" content="Detective Max Mystery - new escape game on mobile">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="img/icon.png">
+    <meta property="fb:app_id" content="ENTER_HERE_THIS_IS_BLANC">
+
+    <title>Detective Max Mystery</title>
+
+    <link rel="canonical" href="ENTER_HERE_THIS_IS_BLANC">
+    <link rel="shortcut icon" href="web/icon.png" type="image/x-icon">
+  </head>
+
+  <style type="text/css">
+
+    body {
+    color: #fff;
+    font-family: 'Roboto', Arial, sans-serif;
+    }
+
+    div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, img, b, u, i, table, tr, th, td, video {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    }
+
+    table {
+    height: 100%;
+    width: 100%;
+    }
+
+    td {
+    vertical-align: middle;
+    }
+
+    .header {
+    background-color: rgba(0,0,0,0);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0);
+    height:100px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 990;
+    -webkit-transition: background-color 300ms linear;
+    -moz-transition: background-color 300ms linear;
+    -o-transition: background-color 300ms linear;
+    -ms-transition: background-color 300ms linear;
+    transition: background-color 300ms linear;
+    }
+
+    .container {
+    display: table;
+    height: 100px;
+    position: relative;
+    width: 100%;
+    }
+
+    .header__icon {
+    display: block;
+    padding-left: 40px;
+    padding-top: 10px;
+    vertical-align: middle;
+    }
+
+    .header__icon__image {
+    display: block;
+    height: auto;
+    max-width: 80px;
+    width: 80px;
+    }
+
+    .header__menu {
+    display: table-cell;
+    padding-right: 40px;
+    text-align: right;
+    vertical-align: middle;
+    width: 100%;
+    }
+
+    .menu {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    text-align: right;
+    }
+
+    .menu__item {
+    clear: both;
+    font-size: 18px;
+    font-weight: 600;
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0px;
+    white-space: nowrap;
+    }
+
+    .menu__item:first-child {
+    padding-left: 0;
+    }
+
+    .menu__item__link {
+    color: #fff;
+    text-decoration: none;
+    }
+
+    .menu__item__link:hover {
+    color: rgb(95, 170, 190);
+    }
+
+    .cover {
+    background-attachment: fixed;
+    background-color: #000;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    background-image: -webkit-linear-gradient(top, #ccc, #777);
+    background-image: -moz-linear-gradient(top, #ccc, #777);
+    background-image: -o-linear-gradient(top, #ccc, #777);
+    background-image: -ms-linear-gradient(top, #ccc, #777);
+    background-image: linear-gradient(top, #ccc, #777);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    }
+
+    .cover__carrier {
+    background-attachment: fixed;
+    background-image: url('img/005.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: unset;
+    }
+
+    .cover__filter {
+    height: 100vh;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-image: -moz-linear-gradient(top, rgba(0,0,0,0.60), rgba(0,0,0,0.60));
+    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.60), rgba(0,0,0,0.60));
+    background-image: -o-linear-gradient(top, rgba(0,0,0,0.60), rgba(0,0,0,0.60));
+    background-image: -ms-linear-gradient(top, rgba(0,0,0,0.60), rgba(0,0,0,0.60));
+    background-image: linear-gradient(top, rgba(0,0,0,0.60), rgba(0,0,0,0.60));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#66000000', endColorstr='#66000000');
+    }
+
+    .cover__container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    padding: 0;
+    width: 100%;
+    }
+
+    .cover__container:before, .cover__container:after, .about_description:before, .about_description:after
+    .tiles_container:before, .contact_container:before, .contact_container:after {
+    content: " ";
+    display: table;
+    }
+
+    .cover .cover__container {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    }
+
+    .cover__width {
+    margin: 0 auto;
+    max-width: 960px;
+    width: 100%;
+    }
+
+    .content__wrapper {
+    display: table-cell;
+    height: 100vh;
+    position: relative;
+    vertical-align: middle;
+    width: 1200px;
+    z-index: 1;
+    }
+
+    .content_centered {
+    text-align: center;
+    }
+
+    .content {
+    padding-bottom: 42px;
+    padding-top: 42px;
+    }
+
+    .content__title {
+    color: #fff;
+    font-size: 72px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 1.17;
+    padding: 24px 0px 24px 0px;
+    }
+
+    .content__descr {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1.55;
+    padding: 15px 0px 30px 0px;
+    }
+
+    .content__buttons {
+    margin-top: 45px;
+    }
+
+    .content__buttons__item {
+    background-image: none;
+    border: 0 none;
+    cursor: pointer;
+    display: inline-block;
+    height: 60px;
+    font-size: 16px;
+    font-weight: bold;
+    padding-left: 60px;
+    padding-right: 60px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    -webkit-appearance: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    }
+
+    .content__buttons__item:nth-child(2) {
+    margin-left: 10px;
+    }
+
+    .content__buttons__item:hover {
+    background-color: #045658 !important;
+    }
+
+    .about {
+    background-color: #000000;
+    padding-bottom: 150px;
+    padding-top: 135px;
+    }
+
+    .about_content {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    padding: 0;
+    width: 100%;
+    }
+
+    .row-12 {
+    max-width: 1160px;
+    }
+
+    .column-row {
+    display: inline;
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 100%;
+    }
+
+    .about_centered {
+    margin-bottom: 90px;
+    text-align: center;
+    }
+
+    .about_title {
+    font-size: 42px;
+    font-weight: 600;
+    line-height: 1.23;
+    margin-bottom: 20px;
+    }
+
+    .about_description {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1.50;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 50vw;
+    }
+
+    .about_description__text {
+    color: #cccaca;
+    font-size: 22px;
+    line-height: 30px;
+    text-align: justify;
+    }
+
+    .blue-span {
+    color: rgb(95, 170, 190);
+    }
+
+    .tiles_container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    padding: 0;
+    width: 100%;
+    }
+
+    .tiles_row:before {
+    box-sizing: content-box;
+    }
+
+    .tiles_row:after {
+    box-sizing: content-box;
+    clear: both;
+    content: '';
+    display: block;
+    height: 0;
+    }
+
+    .tiles_row:not(:first-child) {
+    margin-top: 40px;
+    }
+
+    .tiles_container:after {
+    clear: both;
+    content: " ";
+    display: table;
+    }
+
+    .tile {
+    display: inline;
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
+    max-width: 360px;
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+    }
+
+    .tile_content_wrapper {
+    display: table;
+    height: 260px;
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
+    }
+
+    .tile_content {
+    display: table-cell;
+    height: 100%;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    }
+
+    .tile_content {
+    display: table-cell;
+    height: 100%;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    }
+
+    .tile_content:hover .tile_content__image {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    }
+
+    .tile_content__image {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-transition: all ease-in-out .25s;
+    transition: all ease-in-out .25s;
+    }
+
+    .tile_content__overlay {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-image: -moz-linear-gradient(top, rgba(0,0,0,0.40), rgba(0,0,0,0.40));
+    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.40), rgba(0,0,0,0.40));
+    background-image: -o-linear-gradient(top, rgba(0,0,0,0.40), rgba(0,0,0,0.40));
+    background-image: -ms-linear-gradient(top, rgba(0,0,0,0.40), rgba(0,0,0,0.40));
+    -webkit-transition: all ease-in-out .25s;
+    transition: all ease-in-out .25s;
+    }
+
+    .tile_content__text {
+    padding: 20px 40px;
+    position: relative;
+    -webkit-transition: all ease-in-out .25s;
+    transition: all ease-in-out .25s;
+    }
+
+    .tile_content__text_wrapper {
+    margin: 30px auto;
+    position: relative;
+    -webkit-transition: all ease-in-out .2s;
+    transition: all ease-in-out .2s;
+    }
+
+    .tile_content__text_phrase{
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.35;
+    }
+
+    .contact {
+    background-color: #000000;
+    padding-bottom: 40px;
+    padding-top: 40px;
+    }
+
+    .logo {
+    height: 0; 
+    overflow: hidden;
+    width: 0; 
+    }
+
+    .contact_container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0;
+    }
+
+    .contact_block {
+    display: inline;
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
+    max-width: 560px;
+    width: 100%;
+    }
+
+    .contact_block__text_wrapper {
+    display: table;
+    height:50vh;
+    text-align: left;
+    width: 100%;
+    }
+
+    .contact_block__text {
+    display: table-cell;
+    vertical-align: middle;
+    }
+
+    .contact_block__logo {
+    background-image: url('img/icon.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50vh;  
+    }
+
+    .contact_block__text__title {
+    font-size: 42px;
+    font-weight: 600;
+    line-height: 1.23;
+    margin-bottom: 24px;
+    }
+
+    .contact_block__text__text {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.55;
+    margin-top: 23px;
+    max-width: 500px;
+    }
+
+    .footer {  
+    background-color: #000000;
+    padding-bottom: 60px;
+    padding-top: 15px;
+    }
+
+    .footer_container {
+    display: table;
+    height: 80px;
+    width: 100%;
+    }
+
+    .footer_row_wrapper {
+    display: table-cell;
+    padding: 2px 40px 0;
+    vertical-align: middle;
+    }
+
+    .footer_row {
+    display: table;
+    width: 100%;
+    }
+
+    .footer_item {
+    display: table-cell;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+    text-align: right;
+    vertical-align: middle;
+    width: 33%;
+    }
+
+    .footer_item_centered {
+    padding: 0 16px;
+    text-align: center;
+    }
+
+    .footer_item__social {
+    display: inline-block;
+    margin: 4px 1px 0;
+    overflow: hidden;
+    }
+
+    .footer_item__social svg {
+    height: 30px;
+    width: 30px;
+    x: 0px;
+    y: 0px;
+    }
+
+    .footer_item__social path {
+    fill: #fff;
+    }
+
+    .footer_item__social path:hover {
+    fill: rgb(95, 170, 190) !important;
+    }
+
+    .email-address {
+    color: #fff;
+    text-decoration: none;
+    }
+
+    .email-address:hover {
+    color: rgb(95, 170, 190);
+    text-decoration: none;
+    }
+
+    a:hover {
+    color: #fff;
+    text-decoration: none !important;
+    }
+
+
+    .overlay {
+    background: rgba(0, 0, 0, 0.7);
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: opacity 500ms;
+    visibility: hidden;
+    }
+
+    .overlay:target {
+    opacity: 1;
+    overflow: auto;
+    visibility: visible;
+    z-index: 999;
+    }
+
+    .popup {
+    background: #fff;
+    border-radius: 5px;
+    margin: 7% auto;
+    padding: 20px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    width: 50%;
+    }
+
+    .popup h2 {
+    color: #333;
+    margin-top: 0;
+    }
+
+    .popup a {
+    color: rgb(95, 170, 190);
+    }
+
+    .popup a:hover {
+    color: #333;
+    }
+
+    .popup .close {
+    color: #333;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    transition: all 200ms;
+    }
+
+    .popup .close:hover {
+    color: rgb(95, 170, 190);
+    }
+
+    .privacy_content {
+    color: #555 !important;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.50;
+    margin: 3%;
+    max-height: 30%;
+    overflow: auto;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .cover .cover__container {
+      margin-top: 30px;
+      }
+      .content__title {
+      font-size: 42px;
+      }
+      .content__descr {
+      font-size: 18px;
+      }
+      .content__buttons {
+      margin-top: 45px;
+      }
+      .content__buttons__item {
+      margin-bottom: 16px;
+      }
+      .content__buttons__item:nth-child(2) {
+      margin-left: 0;
+      }
+      .about_description {
+      max-width: 80vw;
+      }
+      .about {
+      padding-bottom: 100px;
+      }
+      .popup{
+      width: 70%;
+      }
+    }
+  </style>
+
+  <div id="privacy_popup" class="overlay">
+    <div class="popup">
+      <h2>Privacy Policy</h2>
+      <a class="close" href="#">&times;</a>
+      <div class="privacy_content">
+        <p>Kolesnikova Ksenia built the Detective Max Mystery app as a Commercial app. This SERVICE is provided by Kolesnikova Ksenia and is intended for use as is.</p>
+        <p>This page is used to inform visitors regarding my policies with the collection, use, and disclosure of Personal Information if anyone decided to use my Service.</p>
+        <p>If you choose to use my Service, then you agreeto the collection and use of information in relation to this policy. The Personal Information that I collect is used for providing and improving the Service. I will not use or share your information with anyone except as described in this Privacy Policy.</p>
+        <p>The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible at Detective Max Mystery unless otherwise defined in this Privacy Policy.</p>
+        <br /><p><strong>Information Collection and Use</strong></p>
+        <p>For a better experience, while using our Service, I may require you to provide us with certain personally identifiable information. The information that I request will be retained on your device and is not collected by me in any way.</p>
+        <p>The app does use third party services that may collect information used to identify you.</p>
+        <div>
+          <p>Link to privacy policy of third party service providers used by the app</p>
+          <ul>
+            <li><a href="https://support.google.com/admob/answer/6128543?hl=en" target="_blank">AdMob</a></li>
+            <li><a href="https://amplitude.com/privacy">Amplitude</a></li>
+            <li><a href="https://firebase.google.com/policies/analytics" target="_blank">Firebase Analytics</a></li>
+            <li><a href="https://firebase.google.com/terms/crashlytics" target="_blank">Firebase Crashlytics</a></li>
+            <li><a href="https://unity3d.com/legal/privacy-policy" target="_blank">Unity</a></li>
+          </ul>
+        </div>
+        <br /><p><strong>Log Data</strong></p>
+        <p>I want to inform you that whenever you use my Service, in a case of an error in the app I collect data and information (through third party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing my Service, the time and date of your use of the Service, and other statistics.</p>
+        <br /><p><strong>Cookies</strong></p>
+        <p>Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.</p>
+        <p>This Service does not use these “cookies” explicitly. However, the app may use third party code and libraries that use “cookies” to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this Service.</p>
+        <br /><p><strong>Service Providers</strong></p>
+        <p>I may employ third-party companies and individuals due to the following reasons:</p>
+        <ul>
+          <li>To facilitate our Service;</li>
+          <li>To provide the Service on our behalf;</li>
+          <li>To perform Service-related services; or</li>
+          <li>To assist us in analyzing how our Service is used.</li>
+        </ul>
+        <p>I want to inform users of this Service that these third parties have access to your Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.</p>
+        <br /><p><strong>Security</strong></p>
+        <p> I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and I cannot guarantee its absolute security.</p>
+        <br /><p><strong>Links to Other Sites</strong></p>
+        <p>This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by me. Therefore, I strongly advise you to review the Privacy Policy of these websites. I have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.</p>
+        <br /><p><strong>Children’s Privacy</strong></p>
+        <p>These Services do not address anyone under the age of 13. I do not knowingly collect personally identifiable information from children under 13. In the case I discover that a child under 13 has provided me with personal information, I immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact me so that I will be able to do necessary actions.</p>
+        <br /><p><strong>Changes to This Privacy Policy</strong></p>
+        <p>I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately after they are posted on this page.</p>
+        <br /><p><strong>Contact Us</strong></p>
+        <p>If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at <a href="mailto:dev.jam.games@gmail.com">dev.jam.games@gmail.com</a>.</p>
+        <p>This privacy policy page was created at <a href="https://privacypolicytemplate.net" target="_blank">privacypolicytemplate.net</a> and modified/generated by <a href="https://app-privacy-policy-generator.firebaseapp.com/" target="_blank">App Privacy Policy Generator</a></p>
+      </div>
+    </div>
+  </div>
+
+  <body style="margin:0px;" data-lang="EN" data-country="US">
+
+    <div>
+      <div>
+        <div class="header">
+          <div class="container">
+            <div class="header__icon">
+                <img src="img/icon.png" class="header__icon__image" imgfield="img" alt="detective max mystery"> 
+            </div>
+            
+            <div class="header__menu">                    
+              <ul class="menu">
+                <li class="menu__item"><a class="menu__item__link" href="">Home</a>
+                </li>
+                <li class="menu__item"><a class="menu__item__link" href="#about">About</a>
+                </li>
+                <li class="menu__item"><a class="menu__item__link" href="#contact">Contact Us</a>
+                </li>
+                <li class="menu__item"><a class="menu__item__link" href="#privacy_popup">Privacy Policy</a>
+                </li>
+              </ul>            
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+
+      <div>
+        <div class="cover">
+
+          <div class="cover__carrier"></div>
+
+          <div class="cover__filter"></div>
+
+          <div class="cover__container">
+            <div class="cover__width">
+              <div class="content__wrapper">
+                <div class="content_centered">
+                  <div class="content">
+                    <div class="content__title">Detective Max Mystery</div>
+                    <div class="content__descr">Escape room + storytelling + adventure = BRAND NEW GAME GENRE</div>
+                    <div class="content__buttons">
+                      <a href="ENTER_HERE_THIS_IS_BLANC" target="_blank" class="content__buttons__item" style="color:#ffffff;background-color:#5faabe;<!--background-image:url('img/googleplay.png');-->">
+                        <table><tr><td>Download in Google.Play</td></tr></table>
+                      </a>
+                      <a href="ENTER_HERE_THIS_IS_BLANC" target="_blank" class="content__buttons__item" style="color:#000000;background-color:#e0e0e0;<!--background-image:url('img/appstore.png');-->">
+                        <table><tr><td>Download in AppStore</td></tr></table>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div>
+      <a name="about" style="font-size:0;"></a>
+    </div>
+
+    <div class="about">
+      <div>
+
+        <div class="about_content">
+          <div class="row-12 column-row">
+            <div class="about_centered">
+              <div class="about_title">
+                <div>Detective Max Mystery: The Beginning</div>
+              </div>
+              <div class="about_description">
+                <div class="about_description__text">Something <span class="blue-span">unbelievable</span> happened today... And everything has changed at once. My name is <span class="blue-span">Max</span>. A few weeks are left until the prom. But not the upcoming exams are now worrying the whole school... Since today my life has been radically changed. Today <span class="blue-span">my friend</span> was found murdered. My <span class="blue-span">duty</span> now is to unravel the <span class="blue-span">mystery</span> of his death. I will certainly get to the bottom of the <span class="blue-span">truth</span>. The killer will be caught, I give my word.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tiles_container">
+
+            <div class="tiles_row">
+              <div class="tile">
+                <div class="tile_content_wrapper">
+                  <div class="tile_content">
+                    <div class="tile_content__image" style="background-image:url('img/001.jpg');"></div>
+                    <div class="tile_content__overlay"></div>
+                    <div class="tile_content__text">
+                      <div class="tile_content__text_wrapper">
+                        <div class="tile_content__text_phrase">Join the investigation</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tile">
+                <div class="tile_content_wrapper">
+                  <div class="tile_content">
+                    <div class="tile_content__image" style="background-image:url('img/003.jpg');"></div>
+                    <div class="tile_content__overlay"></div>
+                    <div class="tile_content__text">
+                      <div class="tile_content__text_wrapper">
+                        <div class="tile_content__text_phrase">Find the clues</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tile">
+                <div class="tile_content_wrapper">
+                  <div class="tile_content">
+                    <div class="tile_content__image" style="background-image:url('img/006.jpg');"></div>
+                    <div class="tile_content__overlay"></div>
+                    <div class="tile_content__text">
+                      <div class="tile_content__text_wrapper">
+                        <div class="tile_content__text_phrase">Open locations</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tiles_row">
+              <div class="tile">
+                <div class="tile_content_wrapper">
+                  <div class="tile_content">
+                    <div class="tile_content__image" style="background-image:url('img/007.jpg');"></div>
+                    <div class="tile_content__overlay"></div>
+                    <div class="tile_content__text">
+                      <div class="tile_content__text_wrapper">
+                        <div class="tile_content__text_phrase">Detect the murderer</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tile">
+                <div class="tile_content_wrapper">
+                  <div class="tile_content">
+                    <div class="tile_content__image" style="background-image:url('img/002.png');"></div>
+                    <div class="tile_content__overlay"></div>
+                    <div class="tile_content__text">
+                      <div class="tile_content__text_wrapper">
+                        <div class="tile_content__text_phrase">Reveal the mystery</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tile">
+                <div class="tile_content_wrapper">
+                  <div class="tile_content">
+                    <div class="tile_content__image" style="background-image:url('img/005.jpg');"></div>
+                    <div class="tile_content__overlay"></div>
+                    <div class="tile_content__text">
+                      <div class="tile_content__text_wrapper">
+                        <div class="tile_content__text_phrase">Bring justice</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <div>
+      <a name="contact" style="font-size:0;"></a>
+    </div>
+
+    <div class="contact">
+      <div class="logo"></div>
+
+      <div class="contact_container">
+        <div class="contact_block">
+          <div class="contact_block__text_wrapper">
+            <div class="contact_block__text">
+              <div class="contact_block__text__title">
+                <div>Jam Games</div>
+              </div>
+              <div class="contact_block__text__text">
+                <div>We are a small company of two enthusiasts<br />creating <span class="blue-span">one of a kind </span>games.<br /><br />
+                  <span class="blue-span">Inspire</span> us.<br /><br />We are open to hear your feedback, please email on <a href="mailto:dev.jam.games@gmail.com" class="blue-span">dev.jam.games@gmail.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact_block">
+          <div class="contact_block__logo""></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer_container" >
+          <div class="footer_row_wrapper">
+
+            <div class="footer_row">
+              <div class="footer_item"></div>
+              <div class="footer_item footer_item_centered">
+                <div><a class="email-address" href="mailto:dev.jam.games@gmail.com">dev.jam.games@gmail.com</a></div>
+              </div>
+
+              <div class="footer_item">
+                <div>
+                  <div class="footer_item__social">
+                    <a href="ENTER_HERE_THIS_IS_BLANC" target="_blank">
+                      <svg class="t-sociallinks__svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 48 48" enable-background="new 0 0 48 48" xml:space="preserve"><desc>Facebook</desc><path d="M47.761,24c0,13.121-10.638,23.76-23.758,23.76C10.877,47.76,0.239,37.121,0.239,24c0-13.124,10.638-23.76,23.764-23.76C37.123,0.24,47.761,10.876,47.761,24 M20.033,38.85H26.2V24.01h4.163l0.539-5.242H26.2v-3.083c0-1.156,0.769-1.427,1.308-1.427h3.318V9.168L26.258,9.15c-5.072,0-6.225,3.796-6.225,6.224v3.394H17.1v5.242h2.933V38.85z"/></svg>
+                    </a>
+                  </div>
+                  <div class="footer_item__social">
+                    <a href="ENTER_HERE_THIS_IS_BLANC" target="_blank">
+                      <svg class="t-sociallinks__svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 48 48" enable-background="new 0 0 48 48" xml:space="preserve"><desc>Twitter</desc><path d="M47.762,24c0,13.121-10.639,23.76-23.761,23.76S0.24,37.121,0.24,24c0-13.124,10.639-23.76,23.761-23.76  S47.762,10.876,47.762,24 M38.031,12.375c-1.177,0.7-2.481,1.208-3.87,1.481c-1.11-1.186-2.694-1.926-4.455-1.926  c-3.364,0-6.093,2.729-6.093,6.095c0,0.478,0.054,0.941,0.156,1.388c-5.063-0.255-9.554-2.68-12.559-6.367  c-0.524,0.898-0.825,1.947-0.825,3.064c0,2.113,1.076,3.978,2.711,5.07c-0.998-0.031-1.939-0.306-2.761-0.762v0.077  c0,2.951,2.1,5.414,4.889,5.975c-0.512,0.14-1.05,0.215-1.606,0.215c-0.393,0-0.775-0.039-1.146-0.109  c0.777,2.42,3.026,4.182,5.692,4.232c-2.086,1.634-4.712,2.607-7.567,2.607c-0.492,0-0.977-0.027-1.453-0.084  c2.696,1.729,5.899,2.736,9.34,2.736c11.209,0,17.337-9.283,17.337-17.337c0-0.263-0.004-0.527-0.017-0.789  c1.19-0.858,2.224-1.932,3.039-3.152c-1.091,0.485-2.266,0.811-3.498,0.958C36.609,14.994,37.576,13.8,38.031,12.375"/></svg>
+                    </a>
+                  </div>
+                  <div class="footer_item__social">
+                    <a href="ENTER_HERE_THIS_IS_BLANC" target="_blank">
+                      <svg class="t-sociallinks__svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 48 48" enable-background="new 0 0 48 48" xml:space="preserve"><desc>LinkedIn</desc><path d="M8.99402 37.97V38.47H9.49402H15.714H16.214V37.97V17.9659V17.4659H15.714H9.49402H8.99402V17.9659V37.97ZM26.077 19.2614V17.969V17.469H25.577H19.613H19.113V17.969V37.973V38.473H19.613H25.829H26.329V37.973V28.077C26.329 26.7816 26.4561 25.6098 26.9179 24.7713C27.1424 24.3639 27.4438 24.0395 27.8525 23.8131C28.2641 23.585 28.814 23.4399 29.558 23.4399C30.2745 23.4399 30.7691 23.6067 31.1207 23.8523C31.4735 24.0988 31.7253 24.4547 31.9038 24.906C32.2721 25.8373 32.29 27.0626 32.29 28.245V37.974V38.474H32.79H39H39.5V37.974V27C39.5 24.2955 39.2136 21.7867 38.0551 19.9487C36.8633 18.0579 34.8148 16.9709 31.546 16.9709C29.0885 16.9709 27.2261 18.003 26.077 19.2614ZM47.501 24C47.501 36.9798 36.9789 47.5 24.001 47.5C11.0211 47.5 0.499023 36.9798 0.499023 24C0.499023 11.0222 11.0211 0.5 24.001 0.5C36.9788 0.5 47.501 11.0261 47.501 24ZM12.604 15.74C14.8675 15.74 16.706 13.9008 16.706 11.634C16.706 9.36816 14.8674 7.52905 12.604 7.52905C10.3344 7.52905 8.5 9.36834 8.5 11.634C8.5 13.8952 10.3339 15.74 12.604 15.74Z"/></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+  </html>
